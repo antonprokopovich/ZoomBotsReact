@@ -14,11 +14,11 @@ function App() {
 
   var signatureEndpoint = 'http://localhost:4000'
   var apiKey = '2dSCUOCIRCm0-aZ2OLehJA'
-  var meetingNumber = '75163938282'
-  var passWord = 'h6juvK'
+  var meetingNumber = '77188322639'
+  var passWord = '3R5dnX'
   var role = 0
   var leaveUrl = 'http://localhost:3000'
-  var userName = 'React'
+  var userName = 'Go Bot'
   var userEmail = ''
 
 
@@ -90,7 +90,7 @@ function App() {
       <main>
         <h1>Zoom WebSDK Sample React</h1>
 
-        <button onClick={getSignature} value='join meeting'>Join Meeting</button>
+        <button onClick={getSignature} id='join-meeting-button'>Join Meeting</button>
       </main>
     </div>
   );
