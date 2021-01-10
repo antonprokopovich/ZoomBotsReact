@@ -14,17 +14,18 @@ function App() {
 
   var signatureEndpoint = 'http://localhost:4000'
   var apiKey = '2dSCUOCIRCm0-aZ2OLehJA'
-  var meetingNumber = '77188322639'
-  var passWord = '3R5dnX'
-  var role = 0
+
+  var meetingNumber = '71122405163'
+  var meetingPassword = 'n0XKwk'
+  var meetingRole = 0
   var leaveUrl = 'http://localhost:3000'
   var userName = 'Go Bot'
   var userEmail = ''
 
 
   // var meetingNumber = window.meetingNumber
-  // var passWord = window.meetingPass
-  // var role = window.role
+  // var meetingPassword = window.meetingPassword
+  // var meetingRole = window.meetingRole
   // var leaveUrl = window.leaveUrl
   // var userName = window.userName
   // var userEmail = window.userEmail
@@ -40,7 +41,7 @@ function App() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         meetingNumber: meetingNumber,
-        role: role
+        role: meetingRole
       })
     }).then(res => res.json())
     .then(response => {
@@ -54,6 +55,7 @@ function App() {
   function startMeeting(signature) {
 
     console.log('signature: ', signature)
+    console.log('joining meeting # ', meetingNumber)
     
     document.getElementById('zmmtg-root').style.display = 'block'
 
@@ -69,7 +71,7 @@ function App() {
           userName: userName,
           apiKey: apiKey,
           userEmail: userEmail,
-          passWord: passWord,
+          passWord: meetingPassword,
           success: (success) => {
             console.log(success)
           },
@@ -90,7 +92,7 @@ function App() {
       <main>
         <h1>Zoom WebSDK Sample React</h1>
 
-        <button onClick={getSignature} id='join-meeting-button'>Join Meeting</button>
+        <button id='join-meeting-button' onClick={getSignature}>Join Meeting</button>
       </main>
     </div>
   );
