@@ -4,37 +4,38 @@ import './App.css';
 import { ZoomMtg } from '@zoomus/websdk';
 import React from 'react';
 
+var log = require('console-log-level')({ level: 'info' })
+
 // Uncomment this line if you are Building for Relative Paths (example: http://mywebsite.com/relativepath") and have set the "homepage" value in package.json - More info here: https://create-react-app.dev/docs/deployment/#building-for-relative-paths
 // ZoomMtg.setZoomJSLib(process.env.PUBLIC_URL + '/node_modules/@zoomus/websdk/dist/lib', '/av')
 
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareJssdk();
 
+const signatureEndpoint = 'http://localhost:4000'
+const apiKey = '2dSCUOCIRCm0-aZ2OLehJA'
+
 function App() {
 
-  var signatureEndpoint = 'http://localhost:4000'
-  var apiKey = '2dSCUOCIRCm0-aZ2OLehJA'
+  log.info('started app')
 
-  var meetingNumber = '71122405163'
-  var meetingPassword = 'n0XKwk'
-  var meetingRole = 0
-  var leaveUrl = 'http://localhost:3000'
-  var userName = 'Go Bot'
-  var userEmail = ''
-
-
-  // var meetingNumber = window.meetingNumber
-  // var meetingPassword = window.meetingPassword
-  // var meetingRole = window.meetingRole
-  // var leaveUrl = window.leaveUrl
-  // var userName = window.userName
-  // var userEmail = window.userEmail
-
-
+  // var meetingNumber = '72068651280'
+  // var meetingPassword = 'i5EDv8'
+  // var meetingRole = 0
+  // var leaveUrl = 'http://localhost:3000'
+  // var userName = 'Go Bot'
+  // var userEmail = ''
 
   function getSignature(e) {
-
     e.preventDefault();
+
+    // TODO вынести данные в один объект
+    var meetingNumber = window.meetingNumber
+    var meetingRole = window.meetingRole
+
+    log.info('meetingNumber: ' + meetingNumber)
+    log.info('meetingRole: ' + meetingRole)
+
 
     fetch(signatureEndpoint, {
       method: 'POST',
@@ -54,8 +55,14 @@ function App() {
 
   function startMeeting(signature) {
 
+    // TODO вынести данные в один объект
+    var meetingNumber = window.meetingNumber
+    var meetingPassword = window.meetingPassword
+    var leaveUrl = window.leaveUrl 
+    var userName = window.userName
+    var userEmail = window.userEmail
+
     console.log('signature: ', signature)
-    console.log('joining meeting # ', meetingNumber)
     
     document.getElementById('zmmtg-root').style.display = 'block'
 
