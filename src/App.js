@@ -17,15 +17,6 @@ const apiKey = '2dSCUOCIRCm0-aZ2OLehJA'
 
 function App() {
 
-  log.info('started app')
-
-  // var meetingNumber = '72068651280'
-  // var meetingPassword = 'i5EDv8'
-  // var meetingRole = 0
-  // var leaveUrl = 'http://localhost:3000'
-  // var userName = 'Go Bot'
-  // var userEmail = ''
-
   function getSignature(e) {
     e.preventDefault();
 
